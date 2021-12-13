@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-mvc-rest
+    name: course-registration-system
   datasource:
     url: jdbc:mysql://localhost/registration
     username: root
@@ -17,10 +17,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
-  security:
-    user:
-      name: Billy
-      password: 1234
+#  security:
+#    user:
+#      name: Billy
+#      password: 1234
 logging:
   file:
     name: /Users/billy/Downloads/EA/miu-ea-project/Logging/${spring.application.name}/log
