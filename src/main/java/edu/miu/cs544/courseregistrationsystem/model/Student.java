@@ -4,6 +4,10 @@ import lombok.Data;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -14,4 +18,6 @@ public class Student extends Person{
     private Address mailingAddress;
     @Embedded
     private Address homeAddress;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
+    List<Registration> registrations = new ArrayList<>();
 }

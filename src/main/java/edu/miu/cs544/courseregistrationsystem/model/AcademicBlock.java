@@ -27,7 +27,6 @@ public class AcademicBlock {
     private LocalDate endDate;
 
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "academicBlock_id")
     private List<CourseOffering> courseOfferings = new ArrayList<>();
 
 }
