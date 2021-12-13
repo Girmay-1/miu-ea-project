@@ -9,7 +9,7 @@ import edu.miu.cs544.courseregistrationsystem.model.Course;
 import edu.miu.cs544.courseregistrationsystem.repository.CourseRepository;
 
 @RestController
-@RequestMapping("countries")
+@RequestMapping("classes")
 public class ClassController {
 	@Autowired
 	private CourseRepository courseRepository;
