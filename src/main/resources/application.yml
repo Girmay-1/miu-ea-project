@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: spring-mvc-rest
+  datasource:
+    url: jdbc:mysql://localhost/registration
+    username: root
+    password: 1234qwer
+    driverClassName: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximumPoolSize: 10
+  jpa:
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  security:
+    user:
+      name: Billy
+      password: 1234
+logging:
+  file:
+    name: /Users/billy/Downloads/EA/miu-ea-project/Logging/${spring.application.name}/log
+server:
+  port: 8080
