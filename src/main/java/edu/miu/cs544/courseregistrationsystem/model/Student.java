@@ -2,15 +2,16 @@ package edu.miu.cs544.courseregistrationsystem.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+
 
 @Entity
 @Data
-public class Student {
-    @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
-
+public class Student extends Person{
+    private String studentId;
+    @Embedded
+    private Address mailingAddress;
+    @Embedded
+    private Address homeAddress;
 }

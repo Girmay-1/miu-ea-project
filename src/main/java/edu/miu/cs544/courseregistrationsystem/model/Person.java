@@ -1,4 +1,18 @@
 package edu.miu.cs544.courseregistrationsystem.model;
 
-public class Person {
+import lombok.Data;
+
+import javax.persistence.*;
+
+@Data
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Person{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    private String name;
+    private String email;
 }
