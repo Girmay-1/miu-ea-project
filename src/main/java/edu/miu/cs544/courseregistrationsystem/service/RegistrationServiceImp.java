@@ -14,18 +14,22 @@ public class RegistrationServiceImp implements RegistrationService{
 	@Autowired
 	RegistrationRepository repository;
 
-	public List<Registration> getAllCourses() {
+	@Override
+	public List<Registration> getAll() {
 		return this.repository.findAll();
 	}
 
-	public Registration readCourse(Long id) {
+	@Override
+	public Registration get(Long id) {
 		return this.repository.findById(id).get();
 	}
 
+	@Override
 	public Registration save(Registration registration) {
 		return this.repository.save(registration);
 	}
 
+	@Override
 	public void delete(Long id) {
 		this.repository.deleteById(id);
 	}

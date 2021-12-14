@@ -14,18 +14,22 @@ public class CourseOfferingServiceImp implements CourseOfferingService {
 	@Autowired
 	CourseOfferingRepository repository;
 
-	public List<CourseOffering> getAllCourses() {
+	@Override
+	public List<CourseOffering> getAll() {
 		return this.repository.findAll();
 	}
 
-	public CourseOffering readCourse(Long id) {
+	@Override
+	public CourseOffering get(Long id) {
 		return this.repository.findById(id).get();
 	}
 
+	@Override
 	public CourseOffering save(CourseOffering courseOffering) {
 		return this.repository.save(courseOffering);
 	}
 
+	@Override
 	public void delete(Long id) {
 		this.repository.deleteById(id);
 	}

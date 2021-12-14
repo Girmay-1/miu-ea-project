@@ -9,23 +9,27 @@ import edu.miu.cs544.courseregistrationsystem.model.Student;
 import edu.miu.cs544.courseregistrationsystem.repository.StudentRepository;
 
 @Service
-public class StudentServiceImp implements StudentService{
+public class StudentServiceImp implements StudentService {
 
 	@Autowired
 	StudentRepository repository;
 
-	public List<Student> getAllCourses() {
+	@Override
+	public List<Student> getAll() {
 		return this.repository.findAll();
 	}
 
-	public Student readCourse(Long id) {
+	@Override
+	public Student get(Long id) {
 		return this.repository.findById(id).get();
 	}
 
+	@Override
 	public Student save(Student student) {
 		return this.repository.save(student);
 	}
 
+	@Override
 	public void delete(Long id) {
 		this.repository.deleteById(id);
 	}
