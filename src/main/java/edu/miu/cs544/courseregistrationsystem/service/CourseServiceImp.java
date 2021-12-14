@@ -14,18 +14,22 @@ public class CourseServiceImp implements CourseService {
 	@Autowired
 	CourseRepository courseRepository;
 
-	public List<Course> getAllCourses() {
+	@Override
+	public List<Course> getAll() {
 		return this.courseRepository.findAll();
 	}
 
-	public Course readCourse(Long id) {
+	@Override
+	public Course get(Long id) {
 		return this.courseRepository.findById(id).get();
 	}
 
+	@Override
 	public Course save(Course course) {
 		return this.courseRepository.save(course);
 	}
 
+	@Override
 	public void delete(Long id) {
 		this.courseRepository.deleteById(id);
 	}

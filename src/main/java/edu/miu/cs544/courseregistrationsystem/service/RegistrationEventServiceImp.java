@@ -9,23 +9,27 @@ import edu.miu.cs544.courseregistrationsystem.model.RegistrationEvent;
 import edu.miu.cs544.courseregistrationsystem.repository.RegistrationEventRepository;
 
 @Service
-public class RegistrationEventServiceImp implements RegistrationEventService{
+public class RegistrationEventServiceImp implements RegistrationEventService {
 
 	@Autowired
 	RegistrationEventRepository repository;
 
-	public List<RegistrationEvent> getAllCourses() {
+	@Override
+	public List<RegistrationEvent> getAll() {
 		return this.repository.findAll();
 	}
 
-	public RegistrationEvent readCourse(Long id) {
+	@Override
+	public RegistrationEvent get(Long id) {
 		return this.repository.findById(id).get();
 	}
 
+	@Override
 	public RegistrationEvent save(RegistrationEvent registrationEvent) {
 		return this.repository.save(registrationEvent);
 	}
 
+	@Override
 	public void delete(Long id) {
 		this.repository.deleteById(id);
 	}

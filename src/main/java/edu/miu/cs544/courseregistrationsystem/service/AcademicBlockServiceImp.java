@@ -14,18 +14,22 @@ public class AcademicBlockServiceImp implements AcademicBlockService {
 	@Autowired
 	AcademicBlockRepository repository;
 
-	public List<AcademicBlock> getAllCourses() {
+	@Override
+	public List<AcademicBlock> getAll() {
 		return this.repository.findAll();
 	}
 
-	public AcademicBlock readCourse(Long id) {
+	@Override
+	public AcademicBlock get(Long id) {
 		return this.repository.findById(id).get();
 	}
 
+	@Override
 	public AcademicBlock save(AcademicBlock academicBlock) {
 		return this.repository.save(academicBlock);
 	}
 
+	@Override
 	public void delete(Long id) {
 		this.repository.deleteById(id);
 	}

@@ -14,18 +14,22 @@ public class RegistrationGroupServiceImp implements RegistrationGroupService {
 	@Autowired
 	RegistrationGroupRepository repository;
 
-	public List<RegistrationGroup> getAllCourses() {
+	@Override
+	public List<RegistrationGroup> getAll() {
 		return this.repository.findAll();
 	}
 
-	public RegistrationGroup readCourse(Long id) {
+	@Override
+	public RegistrationGroup get(Long id) {
 		return this.repository.findById(id).get();
 	}
 
+	@Override
 	public RegistrationGroup save(RegistrationGroup registrationGroup) {
 		return this.repository.save(registrationGroup);
 	}
 
+	@Override
 	public void delete(Long id) {
 		this.repository.deleteById(id);
 	}
