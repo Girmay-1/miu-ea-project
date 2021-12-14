@@ -1,6 +1,5 @@
 package edu.miu.cs544.courseregistrationsystem.controller;
 
-import com.github.javafaker.Faker;
 import edu.miu.cs544.courseregistrationsystem.service.*;
 import edu.miu.cs544.courseregistrationsystem.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/faker")
 public class FakerGenerator {
 	@Autowired
-	ICourseService courseService;
+	CourseService courseService;
 
 
 	@GetMapping
@@ -30,7 +29,7 @@ public class FakerGenerator {
 			course.setName(names[i]);
 			course.setCode(codes[i]);
 			course.setDescription("Sample description ... ");
-			((CourseService) courseService).save(course);
+			((CourseServiceImp) courseService).save(course);
 		}
 	}
 }
