@@ -14,8 +14,8 @@ import java.util.List;
 @Data
 public class Student extends Person{
     private String studentId;
-    @Embedded
-    private Address mailingAddress;
+//    @Embedded
+//    private Address mailingAddress;
     @Embedded
     private Address homeAddress;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
