@@ -18,6 +18,7 @@ public class RegistrationGroup {
     private List<Student> students = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "registrationgroup_id")
     private List<AcademicBlock> academicBlocks = new ArrayList<>();
 
 }
