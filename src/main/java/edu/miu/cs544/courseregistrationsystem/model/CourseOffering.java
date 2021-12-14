@@ -27,7 +27,14 @@ public class CourseOffering {
     @ManyToOne
     private AcademicBlock academicBlock;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "courseOffering")
+    @ManyToOne
+    private Course course;
+
+    @OneToMany(mappedBy = "courseOffering")
     private List<Registration> registrations = new ArrayList<>();
+
+    @OneToMany(mappedBy = "courseOffering")
+    private List<RegistrationRequest> registrationRequests= new ArrayList<>();
+
 
 }
