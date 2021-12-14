@@ -2,19 +2,14 @@ package edu.miu.cs544.courseregistrationsystem.model;
 
 import lombok.Data;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 
 @Entity
 @Data
+@PrimaryKeyJoinColumn
 public class Student extends Person{
     private String studentId;
     @Embedded
@@ -35,6 +30,10 @@ public class Student extends Person{
         @AttributeOverride(name="countryRegion",column=@Column(name="home_countryRegion"))
      })
     private Address homeAddress;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
+
+    @OneToMany( mappedBy = "student")
     List<Registration> registrations = new ArrayList<>();
+
+    @OneToMany(mappedBy = "student")
+    List<RegistrationRequest> registrationRequests = new ArrayList<>();
 }
