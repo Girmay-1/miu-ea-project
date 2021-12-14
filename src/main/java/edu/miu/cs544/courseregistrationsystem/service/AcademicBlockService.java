@@ -9,7 +9,7 @@ import edu.miu.cs544.courseregistrationsystem.model.AcademicBlock;
 import edu.miu.cs544.courseregistrationsystem.repository.AcademicBlockRepository;
 
 @Service
-public class AcademicBlockService {
+public class AcademicBlockService implements IAcademicBlockService {
 
 	@Autowired
 	AcademicBlockRepository repository;
