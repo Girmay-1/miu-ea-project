@@ -9,7 +9,7 @@ import edu.miu.cs544.courseregistrationsystem.model.Course;
 import edu.miu.cs544.courseregistrationsystem.repository.CourseRepository;
 
 @Service
-public class CourseService {
+public class CourseService implements ICourseService {
 
 	@Autowired
 	CourseRepository courseRepository;
