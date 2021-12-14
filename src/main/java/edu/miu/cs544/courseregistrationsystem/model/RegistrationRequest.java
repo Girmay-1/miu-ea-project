@@ -10,6 +10,7 @@ import java.util.List;
 @Entity
 public class RegistrationRequest {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
