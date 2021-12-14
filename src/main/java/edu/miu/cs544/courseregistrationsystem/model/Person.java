@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Data
-@Entity
+@MappedSuperclass
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Person{
     @Id

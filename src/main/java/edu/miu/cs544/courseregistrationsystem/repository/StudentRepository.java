@@ -8,3 +8,4 @@ import edu.miu.cs544.courseregistrationsystem.model.Student;
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
 }
+

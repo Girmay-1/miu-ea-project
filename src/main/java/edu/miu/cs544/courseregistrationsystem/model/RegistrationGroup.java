@@ -14,10 +14,10 @@ public class RegistrationGroup {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Student> students = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<AcademicBlock> academicBlocks = new ArrayList<>();
 
 }

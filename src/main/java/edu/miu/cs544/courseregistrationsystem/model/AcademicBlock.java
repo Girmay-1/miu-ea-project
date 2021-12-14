@@ -26,7 +26,7 @@ public class AcademicBlock {
 
     private LocalDate endDate;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<CourseOffering> courseOfferings = new ArrayList<>();
 
 }
