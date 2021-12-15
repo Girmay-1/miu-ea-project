@@ -147,10 +147,11 @@ public class FakerGenerator {
 		List<AcademicBlock> academicBlocks = academicBlockService.getAll();
 		List<Student> students = studentService.getAll();
 //		List<RegistrationGroup> groups = registrationGroupService.getAll();
-		List<CourseOffering> courseOfferings = courseOfferingService.getAll();
-		int i = 0;
+//		List<CourseOffering> courseOfferings = courseOfferingService.getAll();
+
 		for (AcademicBlock block : academicBlocks) {
 			int defaultPriority = 0;
+			List<CourseOffering> cOfferings = new ArrayList<>();
 			for (Course course : courses) {
 				Random r = new Random();
 				int facultyRandom = r.nextInt(faculties.size());
@@ -178,7 +179,9 @@ public class FakerGenerator {
 
 					registrationRequestService.save(req);
 				}
+				cOfferings.add(courseOffering);
 			}
+			block.setCourseOfferings(cOfferings);
 		}
 	}
 }
