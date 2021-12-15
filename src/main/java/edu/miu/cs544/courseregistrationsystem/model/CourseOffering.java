@@ -21,19 +21,24 @@ public class CourseOffering {
 
     private String code;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="faculty_id",  nullable = false)
     private Faculty faculty;
 
-    @ManyToOne
-    private AcademicBlock academicBlock;
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name="academic_block_id", nullable = false)
+//    private AcademicBlock academicBlock;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name="course_id",  nullable = false)
     private Course course;
 
-    @OneToMany(mappedBy = "courseOffering")
+    @OneToMany(mappedBy = "courseOffering", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private List<Registration> registrations = new ArrayList<>();
 
-    @OneToMany(mappedBy = "courseOffering")
+    @OneToMany(mappedBy = "courseOffering", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private List<RegistrationRequest> registrationRequests= new ArrayList<>();
 
 

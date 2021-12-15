@@ -26,9 +26,13 @@ public class Student extends Person {
 			@AttributeOverride(name = "countryRegion", column = @Column(name = "home_countryRegion")) })
 	private Address homeAddress;
 
-	@OneToMany(mappedBy = "student")
+	@OneToMany(mappedBy = "student", fetch = FetchType.LAZY,
+			cascade = CascadeType.ALL)
 	List<Registration> registrations = new ArrayList<>();
 
-	@OneToMany(mappedBy = "student")
-	List<RegistrationRequest> registrationRequests = new ArrayList<>();
+//	@OneToMany(mappedBy = "student", fetch = FetchType.LAZY,
+//			cascade = CascadeType.ALL)
+//	List<RegistrationRequest> registrationRequests = new ArrayList<>();
+	@OneToOne
+	private RegistrationRequest registrationRequests ;
 }

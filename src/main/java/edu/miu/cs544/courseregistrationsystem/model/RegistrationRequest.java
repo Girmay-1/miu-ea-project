@@ -16,7 +16,7 @@ public class RegistrationRequest {
 
     private int priorityNumber;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "student_id")
     private Student student;
 

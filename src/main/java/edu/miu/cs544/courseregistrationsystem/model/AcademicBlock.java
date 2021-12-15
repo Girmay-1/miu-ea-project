@@ -2,6 +2,7 @@ package edu.miu.cs544.courseregistrationsystem.model;
 
 import edu.miu.cs544.courseregistrationsystem.model.util.Semester;
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -26,7 +27,10 @@ public class AcademicBlock {
 
     private LocalDate endDate;
 
-    @OneToMany(fetch = FetchType.LAZY)
+//    @ToString.Exclude
+//    @OneToMany(mappedBy = "academicBlock", fetch = FetchType.LAZY,
+//			cascade = CascadeType.ALL)
+@OneToMany(fetch = FetchType.EAGER)
     private List<CourseOffering> courseOfferings = new ArrayList<>();
 
 }

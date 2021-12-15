@@ -71,7 +71,6 @@ public class FakerGenerator {
 
 	public void fakerAcademicBlock() {
 		String[] blocks = { "SEPTEMBER", "OCTOBER", "NOVEMBER" };
-
 		for (int i = 9; i < 12; i++) {
 			AcademicBlock academicBlock = new AcademicBlock();
 			academicBlock.setCode("2021-12A-12D");
@@ -95,7 +94,7 @@ public class FakerGenerator {
 			for (int j = 0; j < 10; ++j) {
 				Student student = new Student();
 				student.setName(faker.address().firstName());
-				student.setStudentId("61-12" + i);
+				student.setStudentId("61-12" + j);
 				student.setEmail(faker.bothify("????##@miu.edu"));
 				studentService.save(student);
 				studs.add(student);
@@ -148,7 +147,8 @@ public class FakerGenerator {
 		List<AcademicBlock> academicBlocks = academicBlockService.getAll();
 		List<Student> students = studentService.getAll();
 //		List<RegistrationGroup> groups = registrationGroupService.getAll();
-
+		List<CourseOffering> courseOfferings = courseOfferingService.getAll();
+		int i = 0;
 		for (AcademicBlock block : academicBlocks) {
 			int defaultPriority = 0;
 			for (Course course : courses) {
@@ -163,7 +163,7 @@ public class FakerGenerator {
 						.setCode(courseCode + "-" + block.getCode() + "-" + faculties.get(facultyRandom).getName());
 				courseOffering.setFaculty(faculties.get(facultyRandom));
 				courseOffering.setCourse(course);
-				courseOffering.setAcademicBlock(block);
+//				courseOffering.setAcademicBlock(block);
 				courseOffering.setCapacity(5);
 				courseOfferingService.save(courseOffering);
 
@@ -179,7 +179,6 @@ public class FakerGenerator {
 					registrationRequestService.save(req);
 				}
 			}
-
 		}
 	}
 }
