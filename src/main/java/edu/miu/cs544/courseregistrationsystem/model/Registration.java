@@ -1,6 +1,7 @@
 package edu.miu.cs544.courseregistrationsystem.model;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -12,14 +13,13 @@ public class Registration {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name="id",  referencedColumnName = "id",  insertable=false, updatable=false)
+    @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name = "student_id")
     private Student student;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name="id",  referencedColumnName = "id", insertable=false, updatable=false)
+    @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name = "course_offering_id")
     private CourseOffering courseOffering;
-
-
-
 }

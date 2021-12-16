@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.miu.cs544.courseregistrationsystem.model.RegistrationGroup;
+import edu.miu.cs544.courseregistrationsystem.model.*;
 import edu.miu.cs544.courseregistrationsystem.repository.RegistrationGroupRepository;
 
 @Service
@@ -34,4 +34,8 @@ public class RegistrationGroupServiceImp implements RegistrationGroupService {
 		this.repository.deleteById(id);
 	}
 
+	@Override
+    public List<RegistrationGroup> findByRegistrationEvent(Long registrationEvent) {
+        return repository.findByRegistrationId(registrationEvent);
+    }
 }

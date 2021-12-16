@@ -18,5 +18,6 @@ public class RegistrationEvent {
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
     @OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name="reg_event_id")
     private List<RegistrationGroup> registrationGroups = new ArrayList<>();
 }

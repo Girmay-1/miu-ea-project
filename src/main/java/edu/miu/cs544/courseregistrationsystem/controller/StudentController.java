@@ -21,6 +21,4 @@ public class StudentController {
     public ResponseEntity<?> getRegEvent(@PathVariable String studentId){
         return ResponseEntity.ok(eventService.getLatest(studentId));
     }
-
-    // --------- additional
 }

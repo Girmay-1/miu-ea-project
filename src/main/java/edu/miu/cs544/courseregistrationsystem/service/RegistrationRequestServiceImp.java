@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.miu.cs544.courseregistrationsystem.model.RegistrationRequest;
+import edu.miu.cs544.courseregistrationsystem.model.*;
 import edu.miu.cs544.courseregistrationsystem.repository.RegistrationRequestRepository;
 
 @Service
@@ -34,4 +34,8 @@ public class RegistrationRequestServiceImp implements RegistrationRequestService
 		this.repository.deleteById(id);
 	}
 
+	@Override
+    public RegistrationRequest findByAttributes(int priority, AcademicBlock block, Student student) {
+        return repository.findByAttributes(priority, block, student);
+    }
 }

@@ -1,6 +1,7 @@
 package edu.miu.cs544.courseregistrationsystem.model;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -35,10 +36,12 @@ public class CourseOffering {
 
     @OneToMany(mappedBy = "courseOffering", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<Registration> registrations = new ArrayList<>();
 
     @OneToMany(mappedBy = "courseOffering", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<RegistrationRequest> registrationRequests= new ArrayList<>();
 
 

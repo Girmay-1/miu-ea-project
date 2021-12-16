@@ -19,12 +19,15 @@ public class RegistrationRequest {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "student_id")
     private Student student;
+    
+    @ManyToOne
+    private AcademicBlock block;
 
     @ManyToOne
     @JoinColumn(name = "courseOffering_id")
     private CourseOffering courseOffering;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<RegistrationGroup> registrationGroups = new ArrayList<>();
 
 

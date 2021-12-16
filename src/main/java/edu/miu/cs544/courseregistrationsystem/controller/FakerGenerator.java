@@ -100,8 +100,11 @@ public class FakerGenerator {
 				studs.add(student);
 			}
 			group.setStudents(studs);
-			group.setAcademicBlocks(academicBlocks);
 			registrationGroupService.save(group);
+			for (AcademicBlock block : academicBlocks) {
+				block.setRegistrationGroup(group);
+				academicBlockService.save(block);
+			}
 		}
 	}
 
@@ -112,7 +115,6 @@ public class FakerGenerator {
 		event.setEndDateTime(LocalDateTime.now().plusDays(10));
 		event.setRegistrationGroups(groups);
 		registrationEventService.save(event);
-
 	}
 
 //	public void fakerAdmin() {
@@ -155,7 +157,7 @@ public class FakerGenerator {
 			for (Course course : courses) {
 				Random r = new Random();
 				int facultyRandom = r.nextInt(faculties.size());
-//			int academicRandom = r.nextInt(academicBlocks.size());
+				int academicRandom = r.nextInt(academicBlocks.size());
 //			String facultyName = "" + faculties.get(facultyRandom).getFirstName().charAt(0)
 //					+ faculties.get(facultyRandom).getLastName().charAt(0);
 				String courseCode = course.getCode();
@@ -175,6 +177,7 @@ public class FakerGenerator {
 					req.setPriorityNumber(defaultPriority);
 					req.setCourseOffering(courseOffering);
 					req.setStudent(student);
+					req.setBlock(block);
 //				req.setRegistrationGroups(groups);
 
 					registrationRequestService.save(req);

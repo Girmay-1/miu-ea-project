@@ -19,10 +19,10 @@ public class RegistrationGroup {
     private Long id;
 
     @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reg_group_id")
     private List<Student> students = new ArrayList<>();
-
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "registrationgroup_id")
-    private List<AcademicBlock> academicBlocks = new ArrayList<>();
+    
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "registrationGroup")
+    private List<AcademicBlock> academicBlocks;
 
 }

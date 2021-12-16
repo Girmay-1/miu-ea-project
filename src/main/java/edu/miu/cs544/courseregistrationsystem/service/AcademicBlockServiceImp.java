@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.miu.cs544.courseregistrationsystem.model.AcademicBlock;
+import edu.miu.cs544.courseregistrationsystem.model.*;
 import edu.miu.cs544.courseregistrationsystem.repository.AcademicBlockRepository;
 
 @Service
@@ -34,4 +34,8 @@ public class AcademicBlockServiceImp implements AcademicBlockService {
 		this.repository.deleteById(id);
 	}
 
+	@Override
+	public List<AcademicBlock> findByRegistrationGroup(List<RegistrationGroup> registrationGroups) {
+        return repository.findByRegistrationGroupIn(registrationGroups);
+    }
 }

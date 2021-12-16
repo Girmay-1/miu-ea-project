@@ -2,7 +2,7 @@ package edu.miu.cs544.courseregistrationsystem.service;
 
 import java.util.List;
 
-import edu.miu.cs544.courseregistrationsystem.model.RegistrationRequest;
+import edu.miu.cs544.courseregistrationsystem.model.*;
 
 public interface RegistrationRequestService {
 	List<RegistrationRequest> getAll();
@@ -12,4 +12,6 @@ public interface RegistrationRequestService {
 	RegistrationRequest get(Long id);
 
 	void delete(Long id);
+
+	RegistrationRequest findByAttributes(int priority, AcademicBlock block, Student student);
 }
