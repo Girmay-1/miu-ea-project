@@ -80,6 +80,7 @@ public class RegistrationEventController {
 	}
 
 	// _________________________ Additional inserts _______________
+	
 	// Update a Registration Event's groups
 	@PutMapping("/setgroups/{id}")
 	public ResponseEntity<?> setGroups(@PathVariable Long id, @RequestBody List<RegistrationGroup> groups) {
@@ -99,21 +100,15 @@ public class RegistrationEventController {
 		try {
 			List<RegistrationGroup> groups = registrationGroupService.findByRegistrationEvent(id);
 			List<AcademicBlock> blocks = blockService.findByRegistrationGroup(groups);
-//			int sumOfCapacity = 0;
-//			for (AcademicBlock block : blocks) {
-//				CourseOffering courseOffering = courseOfferingService.findByBlocks(block);
-//				sumOfCapacity += courseOffering.getCapacity();
-//			}
-
-			System.out.println("groups -------- " + groups);
-			System.out.println("blocks -------- " + blocks);
+			// System.out.println("groups -------- " + groups);
+			// System.out.println("blocks -------- " + blocks);
 
 			int capacity = 0;
 			for (AcademicBlock block : blocks) {
 				int priority = 1;
 				List<Student> students = studentService.findByRegistrationEvent(id);
 
-				System.out.println("students -------- " + students);
+				// System.out.println("students -------- " + students);
 				while (students.size() > 0) {
 					if (priority % 2 == 0) {
 						Collections.reverse(students);
@@ -134,7 +129,6 @@ public class RegistrationEventController {
 								courseOfferingService.save(courseOffering);
 								iter.remove();
 							}
-							System.out.println("Registration ---- " + students.size() + students);
 						}
 					}
 					priority++;

@@ -3,6 +3,10 @@ package edu.miu.cs544.courseregistrationsystem.model;
 import lombok.Data;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,11 +28,11 @@ public class RegistrationRequest {
     private AcademicBlock block;
 
     @ManyToOne
+//    @JsonProperty(value = "courseOffering")
     @JoinColumn(name = "courseOffering_id")
+    @JsonIgnore
     private CourseOffering courseOffering;
 
     @OneToMany(fetch = FetchType.LAZY)
     private List<RegistrationGroup> registrationGroups = new ArrayList<>();
-
-
 }
