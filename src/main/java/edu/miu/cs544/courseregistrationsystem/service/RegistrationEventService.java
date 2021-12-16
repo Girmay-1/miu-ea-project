@@ -10,6 +10,8 @@ public interface RegistrationEventService {
 
 	RegistrationEvent save(RegistrationEvent t);
 
+	RegistrationEvent update(RegistrationEvent event, Long id);
+
 	RegistrationEvent get(Long id);
 
 	void delete(Long id);

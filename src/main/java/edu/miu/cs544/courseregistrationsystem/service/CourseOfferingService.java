@@ -9,6 +9,8 @@ public interface CourseOfferingService {
 
 	CourseOffering save(CourseOffering t);
 
+	CourseOffering update(CourseOffering offering, Long id);
+
 	CourseOffering get(Long id);
 
 	void delete(Long id);

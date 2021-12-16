@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("student")
 public class StudentController {
-    //GET /registration-events/latest
-
+    //GET /registration-events/lates
     private RegistrationEventService eventService;
 
     public StudentController(RegistrationEventService eventService) {
@@ -22,4 +21,6 @@ public class StudentController {
     public ResponseEntity<?> getRegEvent(@PathVariable String studentId){
         return ResponseEntity.ok(eventService.getLatest(studentId));
     }
+
+    // --------- additional
 }

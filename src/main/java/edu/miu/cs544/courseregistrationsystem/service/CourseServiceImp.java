@@ -28,6 +28,16 @@ public class CourseServiceImp implements CourseService {
 	public Course save(Course course) {
 		return this.courseRepository.save(course);
 	}
+	
+	@Override
+    public Course update(Course course, Long id) {
+        Course entity = (Course) get(id);
+        entity.setName(course.getName());
+        entity.setCode(course.getCode());
+        entity.setDescription(course.getDescription());
+
+        return courseRepository.save(entity);
+    }
 
 	@Override
 	public void delete(Long id) {

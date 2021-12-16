@@ -35,6 +35,15 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
 	public RegistrationEvent save(RegistrationEvent registrationEvent) {
 		return this.repository.save(registrationEvent);
 	}
+	
+	@Override
+    public RegistrationEvent update(RegistrationEvent event, Long id) {
+        RegistrationEvent entity = (RegistrationEvent) get(id);
+        entity.setStartDateTime(event.getStartDateTime());
+        entity.setEndDateTime(event.getEndDateTime());
+
+        return repository.save(entity);
+    }
 
 	@Override
 	public void delete(Long id) {

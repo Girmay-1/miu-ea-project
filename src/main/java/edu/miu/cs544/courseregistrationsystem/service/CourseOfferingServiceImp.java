@@ -28,6 +28,15 @@ public class CourseOfferingServiceImp implements CourseOfferingService {
 	public CourseOffering save(CourseOffering courseOffering) {
 		return this.repository.save(courseOffering);
 	}
+	
+	@Override
+    public CourseOffering update(CourseOffering offering, Long id) {
+        CourseOffering entity = (CourseOffering) get(id);
+        entity.setCapacity(offering.getCapacity());
+        entity.setAvailableSeats(offering.getAvailableSeats());
+
+        return repository.save(entity);
+    }
 
 	@Override
 	public void delete(Long id) {

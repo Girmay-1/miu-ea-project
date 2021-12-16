@@ -9,6 +9,8 @@ public interface CourseService {
 
 	Course save(Course t);
 
+	Course update(Course course, Long id);
+
 	Course get(Long id);
 
 	void delete(Long id);
