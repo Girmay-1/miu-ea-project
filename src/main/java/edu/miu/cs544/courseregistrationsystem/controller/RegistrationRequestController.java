@@ -44,32 +44,21 @@ public class RegistrationRequestController {
 				List<RegistrationRequest> targetRequests = requestRepository.currentRequests(currentEvent.getId(),
 						currentUserId);
 
-//				System.out.println("---------requests toList-> " + requests.stream().map(a -> a.getId())
-//						.collect(Collectors.toList()) + " <----------");
-//				System.out.println("---------targetRequests toList-> " + targetRequests.stream().map(a -> a.getId())
-//						.collect(Collectors.toList()) + " <----------");
-				
-				
-				// Validate one object per course offering for all blocks available to select from
-				if(Arrays.equals(requests.stream().map(a -> a.getId())
-						.collect(Collectors.toList()), targetRequests.stream().map(a -> a.getId())
-						.collect(Collectors.toList()))) {
-					
-				}
-				for (RegistrationRequest targetRequest : targetRequests) {
-					List<RegistrationRequest> req = requests.stream().filter(a -> a.getId() == targetRequest.getId())
-							.collect(Collectors.toList());
+				Long[] requestsIdMap = new Long[requests.size()];
+				requests.stream().map(a -> a.getId()).collect(Collectors.toList()).toArray(requestsIdMap);
+				Long[] targetsIdMap = new Long[targetRequests.size()];
+				targetRequests.stream().map(a -> a.getId()).collect(Collectors.toList()).toArray(targetsIdMap);
 
-				System.out.println("---------req-> " + req + " <----------");
-					// Validate one object per course offering for all blocks available to select
-					// from
-					if (req.isEmpty()) {
-						return new ResponseEntity<String>(HttpStatus.NOT_ACCEPTABLE);
-					} else {
-						targetRequest.setPriorityNumber(req.get(0).getPriorityNumber());
-						requestRepository.save(targetRequest);
+				if (Arrays.equals(requestsIdMap, targetsIdMap)) {
+					for (RegistrationRequest request : requests) {
+						RegistrationRequest target = registrationReqService.get(request.getId());
+						target.setPriorityNumber(request.getPriorityNumber());
+						requestRepository.save(target);
 					}
-				}
+				// Validate one object per course offering for all blocks available to select from
+				} else
+					return new ResponseEntity<String>(HttpStatus.NOT_ACCEPTABLE);
+
 				return new ResponseEntity<String>(HttpStatus.OK);
 			}
 		} catch (NoSuchElementException e) {
